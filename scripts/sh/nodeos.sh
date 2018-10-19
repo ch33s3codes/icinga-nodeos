@@ -13,7 +13,7 @@ STATUS=$(curl -s -o /dev/null -w "%{http_code}" $URL/v1/chain/get_info)
 
 if [[ "$STATUS" == 200 ]]; then
   # If STATUS == 200
-  DATA=$(curl -sb -H "Accept: application/json" "http://mainnet.eosnairobi.io/v1/chain/get_info")
+  DATA=$(curl -sb -H "Accept: application/json" "$URL/v1/chain/get_info")
   OUTPUT="SUCCESS"
   STATE=$STATE_OK
 
