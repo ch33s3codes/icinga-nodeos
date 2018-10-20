@@ -47,6 +47,7 @@ class Monitor:
             sys.exit(2)
         except Exception as e:
             message = "UNKNOWN - {}".format(str(e))
+            print(message)
             sys.exit(3)
 
 
