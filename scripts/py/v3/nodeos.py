@@ -31,16 +31,17 @@ class Monitor:
             block_time = datetime.datetime.strptime(
                 raw_block_time, "%Y-%m-%dT%H:%M:%S.%f")
             diff = (utc_time - block_time).total_seconds()
-            data = {"block_time": raw_block_time,
-                    "current_local_time": str(now),  "difference": diff}
-            print(data)
+            # data = {"block_time": raw_block_time,
+            #         "current_local_time": str(now),  "difference": diff}
+            message = "OK - The Difference is {}".format(diff)
+            print(message)
             sys.exit(0)
         except requests.exceptions.RequestException:
-            exit_code, message = (2, 'Error cannot connect to host {}'.format(url))
+            exit_code, message = (2, 'WARNING - cannot connect to host {}'.format(url))
             print(message)
             sys.exit(2)
         except Exception as e:
-            print(str(e))
+            message = "UNKNOWN - {}".format(str(e))
             sys.exit(2)
 
 
