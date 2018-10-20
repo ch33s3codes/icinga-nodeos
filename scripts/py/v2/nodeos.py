@@ -7,14 +7,6 @@ URLS = {
 }
 
 
-# def get_info():
-#     for host in HOSTS:
-#         try:
-#             data = requests.get(URLS['get_info'].format(host=host), verify=False).json() 
-#         except:
-#             print('Error cannot connect to host {host}'.format(host=host))
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument("url", type=str,
                     help="The URL for the node you want to check")
