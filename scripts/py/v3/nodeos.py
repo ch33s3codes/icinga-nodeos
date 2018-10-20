@@ -29,7 +29,7 @@ class Monitor:
             print(response)
             sys.exit(0)
         except requests.exceptions.RequestException:
-            exit_code, message = (2, 'Error cannot connect to host ')
+            exit_code, message = (2, 'Error cannot connect to host {}'.format(url))
             print(message)
             sys.exit(2)
         except Exception as e:
@@ -41,7 +41,7 @@ def usage():
     global url
     parser = argparse.ArgumentParser(description='Nodeos block time monitor')
     parser.add_argument(
-        '-u', '--url', help='host url to check')
+        '-u', '--url', default=default_url, help='host url to check')
     args = parser.parse_args()
     url = args.url
 
