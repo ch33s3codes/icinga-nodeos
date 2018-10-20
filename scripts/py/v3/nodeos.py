@@ -3,11 +3,11 @@
 
 import argparse
 import sys
-
+import json
 import requests
 
 import psutil
-
+import datetime
 # Set some ground rules/constants
 memory_total_bytes = float(psutil.virtual_memory().total)
 memory_total_gb = memory_total_bytes / 1024 / 1024 / 1024
@@ -25,8 +25,15 @@ class Monitor:
         try:
             # TODO : Add function here to check and process
             response = requests.get(url, verify=False).json()
-
-            print(response)
+            now = datetime.datetime.now()
+            utc_time = datetime.datetime.utcnow()
+            raw_block_time = response.get('head_block_time')
+            block_time = datetime.datetime.strptime(
+                raw_block_time, "%Y-%m-%dT%H:%M:%S.%f")
+            diff = (utc_time - block_time).total_seconds()
+            data = {"block_time": raw_block_time,
+                    "current_local_time": str(now),  "difference": diff}
+            print(data)
             sys.exit(0)
         except requests.exceptions.RequestException:
             exit_code, message = (2, 'Error cannot connect to host {}'.format(url))
