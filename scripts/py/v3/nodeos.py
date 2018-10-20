@@ -3,14 +3,14 @@
 
 import argparse
 import sys
-import json
 import requests
 
-import psutil
 import datetime
 # Set some ground rules/constants
-memory_total_bytes = float(psutil.virtual_memory().total)
-memory_total_gb = memory_total_bytes / 1024 / 1024 / 1024
+
+# TODO memory_total_bytes = float(psutil.virtual_memory().total)
+# memory_total_gb = memory_total_bytes / 1024 / 1024 / 1024
+
 POST_FIXES = {
     'get_info': 'v1/chain/get_info'
 }
