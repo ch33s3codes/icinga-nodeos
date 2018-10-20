@@ -25,7 +25,7 @@ class Monitor:
     def monitor(self):
         try:
             # TODO : Add function here to check and process
-            response = requests.get(url, verify=False).json()
+            response = requests.get("{}/{}".format(url, POST_FIXES.get('get_info')), verify=False).json()
             now = datetime.datetime.now()
             utc_time = datetime.datetime.utcnow()
             raw_block_time = response.get('head_block_time')
