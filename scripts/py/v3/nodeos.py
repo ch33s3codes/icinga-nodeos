@@ -63,11 +63,6 @@ def usage():
     threshold = args.threshold
 
 
-def notify_telegram():
-    # Send notification via Telegram bot
-    pass
-
-
 def main():
     Monitor(url, threshold).monitor()
 
