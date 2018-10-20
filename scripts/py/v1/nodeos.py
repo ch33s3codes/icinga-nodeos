@@ -37,10 +37,12 @@ class Nodeos(object):
                     raw_block_time, "%Y-%m-%dT%H:%M:%S.%f")
                 diff = (utc_time - block_time).total_seconds()
                 data = {"block_time": raw_block_time,
-                        "current_local_time": now,  "difference": diff}
+                        "current_local_time": str(now),  "difference": diff}
                 print(data)
+                sys.exit(0)
             except Exception as e:
                 print(str(e))
+                sys.exit(2)
         else:
             print("URL Passed")
 
